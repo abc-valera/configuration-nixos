@@ -46,7 +46,16 @@
           toolkit-accessibility = false;
         };
         "org/gnome/desktop/input-sources" = {
-          sources = [ ("xkb", "us") ("xkb", "ua") ];
+          sources = [
+            (lib.gvariant.mkTuple [
+              "xkb"
+              "us"
+            ])
+            (lib.gvariant.mkTuple [
+              "xkb"
+              "ua"
+            ])
+          ];
           xkb-options = [ "ctrl:nocaps" ];
         };
         "org/gnome/desktop/peripherals/touchpad" = {
