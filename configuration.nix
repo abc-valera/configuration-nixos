@@ -105,6 +105,9 @@
     onlyoffice-bin
     google-chrome
 
+    # Themes and icons
+    capitaine-cursors
+    papirus-icon-theme
     ibm-plex
   ];
 

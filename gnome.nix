@@ -16,10 +16,6 @@
   environment.systemPackages = with pkgs; [
     # Extensions
     gnomeExtensions.just-perfection
-
-    # Themes and icons
-    capitaine-cursors
-    papirus-icon-theme
   ];
 
   # Exclude unwanted GNOME packages
@@ -46,7 +42,16 @@
           toolkit-accessibility = false;
         };
         "org/gnome/desktop/input-sources" = {
-          sources = [ ("xkb", "us") ("xkb", "ua") ];
+          sources = [
+            (lib.gvariant.mkTuple [
+              "xkb"
+              "us"
+            ])
+            (lib.gvariant.mkTuple [
+              "xkb"
+              "ua"
+            ])
+          ];
           xkb-options = [ "ctrl:nocaps" ];
         };
         "org/gnome/desktop/peripherals/touchpad" = {
