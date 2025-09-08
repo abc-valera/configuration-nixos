@@ -24,6 +24,8 @@
 
   # Exclude unwanted GNOME packages
   environment.gnome.excludePackages = with pkgs; [
+    gnome-maps
+    gnome-tour
   ];
 
   # GNOME dconf configuration
@@ -43,6 +45,10 @@
           text-scaling-factor = 1.3;
           toolkit-accessibility = false;
         };
+        "org/gnome/desktop/input-sources" = {
+          sources = [ ("xkb", "us") ("xkb", "ua") ];
+          xkb-options = [ "ctrl:nocaps" ];
+        };
         "org/gnome/desktop/peripherals/touchpad" = {
           speed = 0.2;
           two-finger-scrolling-enabled = true;
@@ -55,19 +61,38 @@
         };
         "org/gnome/settings-daemon/plugins/media-keys" = {
           control-center = [ "<Super>comma" ];
-          # custom-keybindings =
-          # CONTINUE HERE
-          # todo: add ssh keys, push to github and finish the gnome configuration
+          home = [ "<Super>f" ];
+          www = [ "<Super>b" ];
+          custom-keybindings = [
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/"
+            "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/"
+          ];
         };
-
-        # Enable extensions
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
+          binding = "<Super>c";
+          command = "code";
+          name = "VSCode";
+        };
+        "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+          binding = "<Super>t";
+          command = "kgx";
+          name = "Gnome Terminal";
+        };
+        "org/gnome/shell/app-switcher" = {
+          current-workspace-only = true;
+        };
         "org/gnome/shell" = {
+          favorite-apps = [
+            "org.telegram.desktop.desktop"
+            "google-chrome.desktop"
+            "org.gnome.Nautilus.desktop"
+            "org.gnome.Ptyxis.desktop"
+            "code.desktop"
+          ];
           enabled-extensions = [
             pkgs.gnomeExtensions.just-perfection.extensionUuid
           ];
         };
-
-        # Configure Extensions
         "org/gnome/shell/extensions/just-perfection" = {
           panel = false;
           panel-in-overview = true;

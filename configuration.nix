@@ -12,7 +12,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./gnome-configuration.nix
+    ./gnome.nix
   ];
 
   # Bootloader.
@@ -97,19 +97,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # System utilities
-    vim
-    wget
-    git
-
-    # Applications
     vlc
     gimp
     telegram-desktop
     spotify
     onlyoffice-bin
-    vscode
     google-chrome
+
+    ibm-plex
   ];
 
   # This value determines the NixOS release from which the default
