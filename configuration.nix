@@ -13,6 +13,7 @@
   imports = [
     ./hardware-configuration.nix
     ./gnome.nix
+    ./programming.nix
   ];
 
   # Bootloader.
