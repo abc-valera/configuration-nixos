@@ -36,6 +36,7 @@
           cursor-size = lib.gvariant.mkInt32 48;
           cursor-theme = "capitaine-cursors";
           enable-hot-corners = false;
+          gtk-enable-primary-paste = false;
           icon-theme = "Papirus";
           show-battery-percentage = true;
           text-scaling-factor = 1.3;

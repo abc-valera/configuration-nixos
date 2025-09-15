@@ -13,6 +13,7 @@
   imports = [
     ./hardware-configuration.nix
     ./gnome.nix
+    ./shells.nix
     ./programming.nix
   ];
 
@@ -78,6 +79,7 @@
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.abc-valera = {
+    shell = pkgs.fish;
     isNormalUser = true;
     description = "Valeriy";
     extraGroups = [
@@ -109,7 +111,11 @@
     capitaine-cursors
     papirus-icon-theme
     ibm-plex
+    nerd-fonts.blex-mono
   ];
+
+  # Disable command-not-found
+  programs.command-not-found.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
