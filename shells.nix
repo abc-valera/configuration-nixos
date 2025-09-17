@@ -39,8 +39,6 @@
     '';
   };
 
-  # TODO configure home-manager with this: https://github.com/evertras/simple-homemanager
-
   # TODO: enable blex nerd font for the ghostty terminal app (and the white theme too)
   # Use symlinks for this, with home-manager?
 }

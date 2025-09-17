@@ -11,17 +11,21 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./gnome.nix
     ./shells.nix
     ./programming.nix
+  ];
+
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
   ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "abc-valera-laptop";
+  networking.hostName = "abc-valera-elitebook25";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

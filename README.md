@@ -1,7 +1,7 @@
 If located in the home folder, then can be applied via
 
-`sudo nixos-rebuild switch --file ~/configuration-nixos/configuration.nix`
+`sudo nixos-rebuild switch --flake ~/configuration-nixos#abc-valera-elitebook25`
 
 If this is the case, then the `/etc/nixos` can be removed entirely
 
-`sudo rm =r /etc/nixos`
+`sudo rm -r /etc/nixos`
