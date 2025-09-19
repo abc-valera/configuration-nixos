@@ -9,7 +9,7 @@
   environment.systemPackages = with pkgs; [
     git
     wget
-    vscode
+    vscode # use a package from the unstable channel
     vim
 
     nixfmt-rfc-style

@@ -19,11 +19,11 @@
   };
 
   programs.bash = {
+    completion.enable = true;
     # Shell aliases for all users
     shellAliases = {
       grep = "grep --color=auto";
     };
-
     # Additional bash initialization
     interactiveShellInit = ''
       eval "$(starship init bash)"

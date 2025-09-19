@@ -104,12 +104,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Programs
     vlc
     gimp
     telegram-desktop
     spotify
     onlyoffice-bin
     google-chrome
+
+    # CLI tools
+    neofetch
+    zip
+    xz
+    unzip
+    p7zip
+    which
+    tree
+    glow # markdown previewer in terminal
 
     # Themes and icons
     capitaine-cursors
