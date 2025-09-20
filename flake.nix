@@ -21,22 +21,23 @@
       nixpkgs,
       home-manager,
       ...
-    }@inputs:
+    }:
+    let
+      system = "x86_64-linux";
+      lib = nixpkgs.lib;
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
     {
-      nixosConfigurations.abc-valera-elitebook25 = nixpkgs.lib.nixosSystem {
-        specialArgs = { inherit inputs; };
+      nixosConfigurations.elitebook25 = nixpkgs.lib.nixosSystem {
+        inherit system;
         modules = [
           ./hardware/elitebook25.nix
           ./configuration/configuration.nix
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-
-            home-manager.users.abc-valera = import ./home/abc-valera.nix;
-          }
         ];
+      };
+      homeConfigurations.abc-valera = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./home/abc-valera.nix ];
       };
     };
 }

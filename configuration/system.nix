@@ -94,6 +94,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # Systemc
+    home-manager
+
     # Programs
     vlc
     gimp
