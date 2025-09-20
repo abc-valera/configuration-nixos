@@ -1,18 +1,20 @@
 {
   config,
-  pkgs,
   lib,
+  pkgs,
+  pkgs-unstable,
   ...
 }:
 
 {
-  environment.systemPackages = with pkgs; [
-    git
-    wget
-    vscode # use a package from the unstable channel
-    vim
+  environment.systemPackages = [
+    pkgs.git
+    pkgs.wget
+    pkgs.vim
 
-    nixfmt-rfc-style
+    pkgs.nixfmt-rfc-style
+
+    pkgs-unstable.vscode
   ];
 
   programs.git = {
