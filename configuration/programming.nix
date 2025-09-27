@@ -2,7 +2,7 @@
   config,
   lib,
   pkgs,
-  pkgs-unstable,
+  unstable,
   ...
 }:
 
@@ -23,7 +23,7 @@
     # Basic dev tools
     pkgs.git
     pkgs.vim
-    pkgs-unstable.vscode
+    unstable.vscode
     pkgs.nixfmt-rfc-style
 
     # Shell-related

@@ -32,14 +32,13 @@
       ...
     }:
     let
-      # TODO: rename pkgs to stable and pkgs-unstable to unstable
       system = "x86_64-linux";
       lib = nixpkgs.lib;
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
       };
-      pkgs-unstable = import nixpkgs-unstable {
+      unstable = import nixpkgs-unstable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -48,7 +47,7 @@
       nixosConfigurations.abc-valera-elitebook25 = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = {
-          inherit pkgs-unstable;
+          inherit unstable;
         };
         modules = [
           ./configuration/configuration.nix

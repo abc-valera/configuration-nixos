@@ -4,8 +4,6 @@
   ...
 }:
 
-# TODO: add dotfiles for the ghostty terminal, enable blex nerd font for the ghostty terminal app (and the white theme too)
-
 # home-manager is used only to symlink the files to the home folder
 
 {
