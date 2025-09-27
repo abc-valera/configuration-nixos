@@ -8,46 +8,48 @@
 
 {
   environment.systemPackages = [
-    pkgs.git
     pkgs.wget
-    pkgs.vim
 
+    # Basic CLI tools
+    pkgs.neofetch
+    pkgs.zip
+    pkgs.xz
+    pkgs.unzip
+    pkgs.p7zip
+    pkgs.which
+    pkgs.tree
+    pkgs.glow # markdown previewer in terminal
+
+    # Basic dev tools
+    pkgs.git
+    pkgs.vim
+    pkgs-unstable.vscode
     pkgs.nixfmt-rfc-style
 
-    pkgs-unstable.vscode
+    # Shell-related
+    pkgs.ghostty
+    pkgs.fish
+    pkgs.starship
   ];
 
-  programs.git = {
-    enable = true;
-
-    config = {
-      user = {
-        name = "abc-valera";
-        email = "valeriy.tymofieiev@gmail.com";
-      };
-      github = {
-        user = "abc-valera";
-      };
-      init = {
-        defaultBranch = "main";
-      };
-      commit = {
-        verbose = true;
-      };
-      help = {
-        autocorrect = 10;
-      };
-      diff = {
-        algorithm = "histogram";
-      };
-      branch = {
-        sort = "-committerdate";
-      };
-      url."git@github.com:" = {
-        insteadOf = "https://github.com/";
-      };
-    };
-  };
+  # TODO: add a run.sh script installation here
+  #   let
+  #   runScript = pkgs.writeShellScriptBin "run" (
+  #     builtins.readFile (
+  #       (pkgs.fetchFromGitHub {
+  #         owner = "abc-valera";
+  #         repo = "run.sh";
+  #         rev = "main";
+  #         sha256 = "sha256-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="; # Replace with actual hash
+  #       }) + "/run"
+  #     )
+  #   );
+  # in
+  # {
+  #   home.packages = with pkgs; [
+  #     runScript
+  #   ];
+  # }
 
   virtualisation.docker = {
     enable = true;

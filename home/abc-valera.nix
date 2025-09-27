@@ -1,10 +1,31 @@
-{ config, pkgs, ... }:
+{
+  config,
+  dotfiles,
+  ...
+}:
 
-# Currently Home Manager is used only to symlink dotfiles.
+# TODO: add dotfiles for the ghostty terminal, enable blex nerd font for the ghostty terminal app (and the white theme too)
+# TODO: move dotfiles to a separate github repo
+
+# home-manager is used only to symlink the files to the home folder
 
 {
   home.username = "abc-valera";
   home.homeDirectory = "/home/abc-valera";
+
+  # Symlink all the dotfiles to the home directory.
+  # Such structure will map everything from the dotfiles to ~ as is.
+  home.file = {
+    ".config" = {
+      source = "${dotfiles}/.config";
+      recursive = true;
+      force = true;
+    };
+    ".bashrc" = {
+      source = "${dotfiles}/.bashrc";
+      force = true;
+    };
+  };
 
   # link the configuration file in current directory to the specified location in home directory
   # home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;

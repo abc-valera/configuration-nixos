@@ -16,6 +16,13 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Enable the garbage collector to run automatically.
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   networking.hostName = "abc-valera-elitebook25";
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -72,52 +79,17 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with 'passwd'.
+  # Define a user account.
   users.users.abc-valera = {
     shell = pkgs.fish;
     isNormalUser = true;
-    description = "Valeriy";
-    extraGroups = [
-      "networkmanager"
-      "wheel"
-    ];
-    packages = with pkgs; [
-      #  thunderbird
-    ];
   };
+  programs.fish.enable = true;
 
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Globally installed packages.
   environment.systemPackages = with pkgs; [
     # System
     home-manager
-
-    # Programs
-    vlc
-    gimp
-    telegram-desktop
-    spotify
-    onlyoffice-bin
-    google-chrome
-
-    # CLI tools
-    neofetch
-    zip
-    xz
-    unzip
-    p7zip
-    which
-    tree
-    glow # markdown previewer in terminal
-
-    # Themes and icons
-    capitaine-cursors
-    papirus-icon-theme
-    ibm-plex
-    nerd-fonts.blex-mono
   ];
 
   # Disable command-not-found

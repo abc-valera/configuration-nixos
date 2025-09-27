@@ -7,9 +7,10 @@
 
 {
   imports = [
+    ./docker.nix
+    ./general.nix
     ./gnome.nix
     ./programming.nix
-    ./shells.nix
     ./system.nix
   ];
 
