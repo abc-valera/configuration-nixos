@@ -15,6 +15,11 @@
       url = "github:abc-valera/dotfiles";
       flake = false; # TODO: maybe make it a flake
     };
+    # TODO: add a run.sh script installation here
+    # runsh = {
+    #   url = "github:abc-valera/run.sh";
+    #   flake = false;
+    # };
   };
 
   outputs =
@@ -46,14 +51,21 @@
           inherit pkgs-unstable;
         };
         modules = [
-          ./hardware/elitebook25.nix
           ./configuration/configuration.nix
+          ./hardware/elitebook25.nix
+
+          # Home Manager is used as a NixOS module.
+          # Its responsible for symlinking the dotfiles.
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+
+            home-manager.users.abc-valera = import ./home/abc-valera.nix;
+
+            home-manager.extraSpecialArgs = { inherit dotfiles; };
+          }
         ];
-      };
-      homeConfigurations.abc-valera = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit dotfiles; };
-        modules = [ ./home/abc-valera.nix ];
       };
     };
 }
