@@ -81,8 +81,12 @@
 
   # Define a user account.
   users.users.abc-valera = {
-    shell = pkgs.fish;
     isNormalUser = true;
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+    shell = pkgs.fish;
   };
   programs.fish.enable = true;
 

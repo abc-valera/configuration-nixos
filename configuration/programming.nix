@@ -27,7 +27,7 @@
     pkgs.nixfmt-rfc-style
 
     # Shell-related
-    pkgs.ghostty
+    unstable.ghostty
     pkgs.fish
     pkgs.starship
   ];

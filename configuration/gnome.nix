@@ -83,8 +83,8 @@
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
           binding = "<Super>t";
-          command = "kgx";
-          name = "Gnome Terminal";
+          command = "ghostty";
+          name = "Ghostty Terminal";
         };
         "org/gnome/shell/app-switcher" = {
           current-workspace-only = true;
