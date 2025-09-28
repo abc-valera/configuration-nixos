@@ -24,7 +24,9 @@
     pkgs.git
     pkgs.vim
     unstable.vscode
+
     pkgs.nixfmt-rfc-style
+    pkgs.nixd
 
     # Shell-related
     unstable.ghostty

@@ -1,9 +1,6 @@
 {
   description = "abc-valera's NixOS configuration";
 
-  # TODO: explore the usage of dev environments, look up these:
-  #   https://nixos-and-flakes.thiscute.world/development/intro
-
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
