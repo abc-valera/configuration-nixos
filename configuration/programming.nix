@@ -25,6 +25,10 @@
     pkgs.vim
     unstable.vscode
 
+    # Programming languages
+    unstable.dotnetCorePackages.sdk_9_0-bin
+
+    # Nix tools
     pkgs.nixfmt-rfc-style
     pkgs.nixd
 
