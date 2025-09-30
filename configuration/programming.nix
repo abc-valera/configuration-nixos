@@ -8,7 +8,11 @@
 
 {
   environment.systemPackages = [
+    # Networking tools
     pkgs.wget
+    pkgs.curl
+    pkgs.lsof
+    pkgs.unixtools.netstat
 
     # Basic CLI tools
     pkgs.neofetch
