@@ -1,13 +1,10 @@
 {
-  config,
   pkgs,
   lib,
   ...
 }:
 
 {
-  # TODO: configure screen dimming and locking timeout
-
   # Enable the X11 windowing system
   services.xserver.enable = true;
 
@@ -33,6 +30,12 @@
     {
       lockAll = true; # prevents overriding
       settings = {
+        "org/gnome/Console" = {
+          theme = "day";
+          use-system-font = false;
+          custom-font = "BlexMono Nerd Font Mono 12";
+        };
+
         "org/gnome/desktop/interface" = {
           accent-color = "blue";
           cursor-size = lib.gvariant.mkInt32 48;
@@ -42,7 +45,6 @@
           icon-theme = "Papirus";
           show-battery-percentage = true;
           text-scaling-factor = 1.3;
-          toolkit-accessibility = false;
         };
         "org/gnome/desktop/input-sources" = {
           sources = [
@@ -61,12 +63,25 @@
           speed = 0.2;
           two-finger-scrolling-enabled = true;
         };
+
+        "org/gnome/desktop/session" = {
+          idle-delay = lib.gvariant.mkUint32 0; # disable automatic screen locking
+        };
         "org/gnome/desktop/sound" = {
           event-sounds = false;
         };
         "org/gnome/desktop/wm/preferences" = {
           button-layout = ":";
         };
+
+        "org/gnome/settings-daemon/plugins/power" = {
+          idle-dim = false;
+          sleep-inactive-ac-timeout = lib.gvariant.mkInt32 1800;
+          sleep-inactive-ac-type = "suspend";
+          sleep-inactive-battery-timeout = lib.gvariant.mkInt32 1800;
+          sleep-inactive-battery-type = "suspend";
+        };
+
         "org/gnome/settings-daemon/plugins/media-keys" = {
           control-center = [ "<Super>comma" ];
           home = [ "<Super>f" ];
@@ -83,12 +98,14 @@
         };
         "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
           binding = "<Super>t";
-          command = "ghostty";
-          name = "Ghostty Terminal";
+          command = "kgx";
+          name = "Gnome Console";
         };
+
         "org/gnome/shell/app-switcher" = {
           current-workspace-only = true;
         };
+
         "org/gnome/shell" = {
           favorite-apps = [
             "org.telegram.desktop.desktop"

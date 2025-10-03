@@ -1,6 +1,4 @@
 {
-  config,
-  lib,
   pkgs,
   unstable,
   ...
@@ -12,22 +10,6 @@
 {
   # On programming languages setup: https://github.com/the-nix-way/dev-templates
   environment.systemPackages = [
-    # Networking tools
-    pkgs.wget
-    pkgs.curl
-    pkgs.lsof
-    pkgs.unixtools.netstat
-
-    # Basic CLI tools
-    pkgs.neofetch
-    pkgs.zip
-    pkgs.xz
-    pkgs.unzip
-    pkgs.p7zip
-    pkgs.which
-    pkgs.tree
-    pkgs.glow # markdown previewer in terminal
-
     # Basic dev tools
     pkgs.git
     pkgs.gh
@@ -60,11 +42,6 @@
     # unstable.rustc
 
     # Python
-
-    # Shell-related
-    pkgs.ghostty
-    pkgs.fish
-    pkgs.starship
   ];
 
   virtualisation.docker = {
