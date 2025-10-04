@@ -21,7 +21,11 @@
     pkgs.nixfmt-rfc-style
     pkgs.nixd
 
-    # Go
+    # Shell
+    pkgs.shellcheck
+    pkgs.bash-completion
+
+    # Go https://wiki.nixos.org/wiki/Go
     unstable.go
     unstable.gopls
     unstable.delve
@@ -30,18 +34,20 @@
     unstable.gotests
     unstable.go-tools
     unstable.gotools
+    unstable.gofumpt
+    unstable.air
 
-    # Dotnet
+    # Dotnet https://wiki.nixos.org/wiki/DotNET
     unstable.dotnetCorePackages.sdk_9_0-bin
 
-    # Node.js
-    # unstable.nodejs
+    # Node.js https://wiki.nixos.org/wiki/Node.js
+    unstable.nodejs
 
-    # Rust (https://wiki.nixos.org/wiki/Rust)
+    # Rust https://wiki.nixos.org/wiki/Rust
     # unstable.cargo
     # unstable.rustc
 
-    # Python
+    # Python https://wiki.nixos.org/wiki/Python
   ];
 
   virtualisation.docker = {
