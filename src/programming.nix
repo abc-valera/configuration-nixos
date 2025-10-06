@@ -4,10 +4,17 @@
   ...
 }:
 
-# TODO: Find a way to install things the way it's supposed to be, like rustup for Rust,
-# just installing golang, etc.
-
 {
+# https://wiki.nixos.org/wiki/Nix-ld
+programs.nix-ld = {
+    enable = true;
+    libraries = [
+        pkgs.stdenv.cc.cc.lib # TODO: maybe swap this one for some other c package
+        pkgs.libz
+    ];
+  };
+
+
   # On programming languages setup: https://github.com/the-nix-way/dev-templates
   environment.systemPackages = [
     # Basic dev tools
@@ -48,6 +55,8 @@
     # unstable.rustc
 
     # Python https://wiki.nixos.org/wiki/Python
+# unstable.python3
+
   ];
 
   virtualisation.docker = {
