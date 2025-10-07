@@ -1,4 +1,7 @@
 { ... }:
+
+# TODO: check if it's possible to make windows dual boot reproducible
+
 let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
