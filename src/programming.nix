@@ -9,8 +9,7 @@
   programs.nix-ld = {
     enable = true;
     libraries = [
-      pkgs.stdenv.cc.cc.lib # TODO: maybe swap this one for some other c package
-      pkgs.libz
+      pkgs.glibc
     ];
   };
 
