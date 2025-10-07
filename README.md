@@ -1,17 +1,18 @@
 ## Installation
 
-Make sure that you have the following channels installed:
+Setup a fresh nixos installation. If Gnome is used, disable automatic sleep in the power settings.
+
+Then add and update the following channels:
 
 ```
-❯ sudo nix-channel --list
-home-manager https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz
-nixos https://nixos.org/channels/nixos-25.05
-nixpkgs-unstable https://nixos.org/channels/nixos-unstable
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
+sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
+
+sudo nix-channel --update
 ```
 
-Then clone the repo into `~/configuration-nixos` and run `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/configuration.nix nixos-rebuild switch`.
-
-Note, that the `NIXOS_CONFIG` should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
+Download the repo somehow? and place it into `~/configuration-nixos`. Copy the hardware configuration from the `/etc/nixos` into `src/hardware/elitebook25`. Then run `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
 
 The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
 
