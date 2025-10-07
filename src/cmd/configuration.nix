@@ -6,6 +6,7 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
+  # TODO: make sure this is not fetched every time
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };

@@ -74,6 +74,23 @@
           button-layout = ":";
         };
 
+        # Wallpaper settings
+        "org/gnome/desktop/background" = {
+          color-shading-type = "solid";
+          picture-options = "zoom";
+          picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+          picture-uri-dark = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-d.svg";
+          primary-color = "#241f31";
+          secondary-color = "#000000";
+        };
+        "org/gnome/desktop/screensaver" = {
+          color-shading-type = "solid";
+          picture-options = "zoom";
+          picture-uri = "file:///run/current-system/sw/share/backgrounds/gnome/blobs-l.svg";
+          primary-color = "#241f31";
+          secondary-color = "#000000";
+        };
+
         "org/gnome/settings-daemon/plugins/power" = {
           idle-dim = false;
           sleep-inactive-ac-timeout = lib.gvariant.mkInt32 1800;

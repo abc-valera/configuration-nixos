@@ -5,15 +5,14 @@
 }:
 
 {
-# https://wiki.nixos.org/wiki/Nix-ld
-programs.nix-ld = {
+  # https://wiki.nixos.org/wiki/Nix-ld
+  programs.nix-ld = {
     enable = true;
     libraries = [
-        pkgs.stdenv.cc.cc.lib # TODO: maybe swap this one for some other c package
-        pkgs.libz
+      pkgs.stdenv.cc.cc.lib # TODO: maybe swap this one for some other c package
+      pkgs.libz
     ];
   };
-
 
   # On programming languages setup: https://github.com/the-nix-way/dev-templates
   environment.systemPackages = [
@@ -23,6 +22,9 @@ programs.nix-ld = {
     pkgs.vim
     unstable.vscode
     # pkgs.direnv
+
+    # C/C++
+    pkgs.gcc
 
     # Nix
     pkgs.nixfmt-rfc-style
@@ -55,7 +57,7 @@ programs.nix-ld = {
     # unstable.rustc
 
     # Python https://wiki.nixos.org/wiki/Python
-# unstable.python3
+    # unstable.python3
 
   ];
 
