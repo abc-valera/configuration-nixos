@@ -3,8 +3,8 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  dotfiles = builtins.fetchGit {
-    url = "https://github.com/abc-valera/dotfiles";
+  dotfiles = builtins.fetchTarball {
+    url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };
 in
 {
