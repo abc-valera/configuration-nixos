@@ -20,6 +20,7 @@
     pkgs.gh
     pkgs.vim
     unstable.vscode
+    unstable.code-cursor
     # pkgs.direnv
 
     # C/C++
