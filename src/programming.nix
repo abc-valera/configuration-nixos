@@ -48,17 +48,21 @@
 
     # Dotnet https://wiki.nixos.org/wiki/DotNET
     unstable.dotnetCorePackages.sdk_9_0-bin
+    unstable.powershell
 
     # Node.js https://wiki.nixos.org/wiki/Node.js
     unstable.nodejs
 
     # Rust https://wiki.nixos.org/wiki/Rust
-    # unstable.cargo
-    # unstable.rustc
+    unstable.cargo
+    unstable.rustc
+    unstable.rust-analyzer
 
     # Python https://wiki.nixos.org/wiki/Python
     # unstable.python3
 
+    # Zig
+    unstable.zig
   ];
 
   virtualisation.docker = {
