@@ -17,3 +17,5 @@ Download the repo somehow? and place it into `~/configuration-nixos`. Copy the h
 The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
 
 To update the system run `sudo nix-channel --update`.
+
+sudo nixos-rebuild switch --upgrade
