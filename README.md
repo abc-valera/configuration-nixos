@@ -1,6 +1,6 @@
 ## Installation
 
-Setup a fresh nixos installation. If Gnome is used, disable automatic sleep in the power settings.
+Setup a fresh nixos installation.
 
 Then add and update the following channels:
 
