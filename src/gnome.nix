@@ -59,9 +59,13 @@
           ];
           xkb-options = [ "ctrl:nocaps" ];
         };
+
         "org/gnome/desktop/peripherals/touchpad" = {
           speed = 0.2;
           two-finger-scrolling-enabled = true;
+        };
+        "org/gnome/desktop/peripherals/keyboard" = {
+          repeat = false;
         };
 
         "org/gnome/desktop/session" = {
