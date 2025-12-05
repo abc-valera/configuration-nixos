@@ -13,6 +13,10 @@
     ];
   };
 
+  environment.variables = {
+    RUST_SRC_PATH = "${unstable.rust.packages.stable.rustPlatform.rustLibSrc}";
+  };
+
   # On programming languages setup: https://github.com/the-nix-way/dev-templates
   environment.systemPackages = [
     # Basic dev tools
@@ -57,12 +61,13 @@
     unstable.cargo
     unstable.rustc
     unstable.rust-analyzer
+    unstable.rustfmt
 
     # Python https://wiki.nixos.org/wiki/Python
-    # unstable.python3
+    unstable.python3
 
-    # Zig
-    unstable.zig
+    # Perl
+    unstable.perl
   ];
 
   virtualisation.docker = {
