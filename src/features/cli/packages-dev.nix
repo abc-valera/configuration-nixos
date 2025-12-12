@@ -36,7 +36,6 @@
 
     # Shell
     pkgs.shellcheck
-    pkgs.bash-completion
 
     # Go https://wiki.nixos.org/wiki/Go
     unstable.go
@@ -69,10 +68,4 @@
     # Perl
     unstable.perl
   ];
-
-  virtualisation.docker = {
-    enable = true;
-  };
-  # Add the user to the "docker" group to run docker without sudo
-  users.users.abc-valera.extraGroups = [ "docker" ];
 }

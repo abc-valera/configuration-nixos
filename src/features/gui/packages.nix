@@ -1,6 +1,5 @@
 {
   pkgs,
-  unstable,
   ...
 }:
 
@@ -14,25 +13,6 @@
     pkgs.onlyoffice-bin
     pkgs.google-chrome
     pkgs.firefox
-
-    # CLI programs
-    pkgs.wget
-    pkgs.curl
-    pkgs.lsof
-    pkgs.unixtools.netstat
-
-    pkgs.neofetch
-    pkgs.zip
-    pkgs.xz
-    pkgs.unzip
-    pkgs.p7zip
-    pkgs.which
-    pkgs.tree
-    pkgs.glow # markdown previewer in terminal
-
-    # Terminal related
-    pkgs.fish
-    pkgs.starship
 
     # Themes and icons
     pkgs.capitaine-cursors
