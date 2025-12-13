@@ -12,10 +12,18 @@ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/rel
 sudo nix-channel --update
 ```
 
-Download the repo somehow? and place it into `~/configuration-nixos`. Copy the hardware configuration from the `/etc/nixos` into `src/hardware/elitebook25`. Then run `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/nixos/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
+Clone the repo into the home directory:
+
+```
+cd
+nix-shell -p git
+git clone https://github.com/abc-valera/configuration-nixos.git
+```
+
+Copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists. 
+
+Then run the `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/nixos/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
 
 The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
 
-To update the system run `sudo nix-channel --update`.
-
-sudo nixos-rebuild switch --upgrade
+To update the system run `sudo nixos-rebuild switch --upgrade`.
