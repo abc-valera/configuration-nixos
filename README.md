@@ -27,3 +27,7 @@ Then run the `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/nixos/configur
 The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
 
 To update the system run `sudo nixos-rebuild switch --upgrade`.
+
+## Resources
+
+https://nix-community.github.io/NixOS-WSL
