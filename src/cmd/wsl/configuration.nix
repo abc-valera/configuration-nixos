@@ -15,6 +15,7 @@ in
   };
 
   imports = [
+    <nixos-wsl/modules>
     <home-manager/nixos>
 
     ../../features/system.nix
@@ -40,7 +41,7 @@ in
   # WSL-specific settings
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
-  wsl.interopPath = "/mnt/c/Users";
+  wsl.docker-desktop.enable = true;
 
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
