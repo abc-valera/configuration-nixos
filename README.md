@@ -13,6 +13,7 @@ git clone https://github.com/abc-valera/configuration-nixos.git
 Add and update the following channels:
 
 ```
+sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
 sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
 
@@ -36,14 +37,6 @@ sudo nix-channel --update
 Then run the `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/wsl/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
 
 ### NixOS Installation
-
-Add an additional channel:
-
-```
-sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
-
-sudo nix-channel --update
-```
 
 Copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists. 
 
