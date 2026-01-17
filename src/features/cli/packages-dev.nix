@@ -23,8 +23,6 @@
     pkgs.git
     pkgs.gh
     pkgs.vim
-    unstable.vscode
-    unstable.code-cursor # maybe use this instead: code-cursor-fhs
     # pkgs.direnv
 
     # C/C++

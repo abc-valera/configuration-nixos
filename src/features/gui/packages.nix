@@ -1,5 +1,6 @@
 {
   pkgs,
+  unstable,
   ...
 }:
 
@@ -13,6 +14,8 @@
     pkgs.onlyoffice-bin
     pkgs.google-chrome
     pkgs.firefox
+    unstable.vscode
+    unstable.code-cursor # maybe use this instead: code-cursor-fhs
 
     # Themes and icons
     pkgs.capitaine-cursors
