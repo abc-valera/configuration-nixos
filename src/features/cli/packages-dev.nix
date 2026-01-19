@@ -27,6 +27,7 @@
 
     # C/C++
     pkgs.gcc
+    pkgs.clang-tools
 
     # Nix
     pkgs.nixfmt-rfc-style

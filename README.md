@@ -34,7 +34,7 @@ Then run the `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/wsl/configurat
 
 ### NixOS Installation
 
-Copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists. 
+Copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists.
 
 Then run the `sudo NIXOS_CONFIG=$HOME/configuration-nixos/src/cmd/nixos/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
 
