@@ -24,14 +24,16 @@
     pkgs.gh
     pkgs.vim
     # pkgs.direnv
-
-    # C/C++
-    pkgs.gcc
-    pkgs.clang-tools
+    unstable.claude-code
 
     # Nix
     pkgs.nixfmt-rfc-style
     pkgs.nixd
+
+    # C/C++
+    pkgs.gcc
+    pkgs.clang
+    # pkgs.clang-tools
 
     # Shell
     pkgs.shellcheck
