@@ -11,7 +11,7 @@
     pkgs.gimp
     pkgs.telegram-desktop
     pkgs.spotify
-    pkgs.onlyoffice-bin
+    pkgs.onlyoffice-desktopeditors
     pkgs.google-chrome
     pkgs.firefox
     unstable.vscode
