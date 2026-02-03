@@ -11,9 +11,9 @@ git clone https://github.com/abc-valera/configuration-nixos.git
 Add and update the following channels:
 
 ```
-sudo nix-channel --add https://nixos.org/channels/nixos-25.05 nixos
+sudo nix-channel --add https://nixos.org/channels/nixos-xx.xx nixos
 sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.05.tar.gz home-manager
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-xx.xx.tar.gz home-manager
 
 sudo nix-channel --update
 ```
@@ -54,8 +54,8 @@ Approximate list of commands (change the `xx.xx` for the target version):
 
 ```
 sudo nix-channel --add https://channels.nixos.org/nixos-xx.xx nixos
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-25.11.tar.gz home-manager
-sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-25.11.tar.gz nixos-wsl
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-xx.xx.tar.gz home-manager
+sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-xx.xx.tar.gz nixos-wsl
 ```
 
 Then verify using `sudo nix-channel --list`. If everything okay then don't forget to run `sudo nixos-rebuild switch --upgrade`.
