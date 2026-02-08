@@ -48,12 +48,6 @@ in
   home-manager.users.abc-valera = import ../../features/home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
-  virtualisation.docker = {
-    enable = true;
-  };
-  # Add the user to the "docker" group to run docker without sudo
-  users.users.abc-valera.extraGroups = [ "docker" ];
-
   # Bootloader
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

@@ -41,7 +41,6 @@ in
   # WSL-specific settings
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
-  wsl.docker-desktop.enable = true;
 
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
