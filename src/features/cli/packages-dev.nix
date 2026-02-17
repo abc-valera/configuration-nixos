@@ -25,6 +25,7 @@
     pkgs.vim
     # pkgs.direnv
     unstable.claude-code
+    pkgs.gnumake
 
     # Nix
     pkgs.nixfmt-rfc-style
