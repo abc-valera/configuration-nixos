@@ -10,6 +10,9 @@
     enable = true;
     libraries = [
       pkgs.glibc
+      pkgs.stdenv.cc.cc.lib
+      pkgs.zlib
+      pkgs.libgcc.lib
     ];
   };
 
