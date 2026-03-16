@@ -20,6 +20,9 @@
   # Disable command-not-found
   programs.command-not-found.enable = false;
 
+  # SSH agent
+  programs.ssh.startAgent = true;
+
   # Home Manager
   environment.systemPackages = with pkgs; [
     home-manager
