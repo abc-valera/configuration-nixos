@@ -77,6 +77,4 @@
   virtualisation.docker = {
     enable = true;
   };
-  # Add the user to the "docker" group to run docker without sudo
-  users.users.abc-valera.extraGroups = [ "docker" ];
 }
