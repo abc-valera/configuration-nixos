@@ -21,6 +21,11 @@
       source = "${dotfiles}/.bashrc";
       force = true;
     };
+    "repos" = {
+      source = "${dotfiles}/repos";
+      recursive = true;
+      force = true;
+    };
   };
 
   # This value determines the home Manager release that your
