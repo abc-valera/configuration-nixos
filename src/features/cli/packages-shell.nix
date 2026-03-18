@@ -10,5 +10,10 @@
     pkgs.starship
   ];
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellAliases = {
+      claude-o3c = "CLAUDE_CONFIG_DIR=~/repos/valeriy-o3c/.claude claude";
+    };
+  };
 }
