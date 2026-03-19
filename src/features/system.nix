@@ -54,6 +54,7 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "video"
     ];
     shell = pkgs.fish;
   };
