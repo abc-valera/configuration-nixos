@@ -24,5 +24,8 @@
     pkgs.curl
     pkgs.lsof
     pkgs.unixtools.netstat
+
+    # Kernel modules
+    pkgs.kmod
   ];
 }
