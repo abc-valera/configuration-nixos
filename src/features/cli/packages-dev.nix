@@ -13,6 +13,12 @@
       pkgs.stdenv.cc.cc.lib
       pkgs.zlib
       pkgs.libgcc.lib
+      pkgs.glib.out
+      pkgs.libGL
+      pkgs.xorg.libxcb
+      pkgs.xorg.libX11
+      pkgs.xorg.libXext
+      pkgs.xorg.libSM
     ];
   };
 
