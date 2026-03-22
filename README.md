@@ -60,6 +60,14 @@ sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/h
 
 Then verify using `sudo nix-channel --list`. If everything okay then don't forget to run `sudo nixos-rebuild switch --upgrade`.
 
+## Other
+
+SSH keys can be generated via:
+
+```
+ssh-keygen -t ed25519 -C "valeriy.tymofieiev@gmail.com" -f /home/abc-valera/.ssh/id_ed_personal
+```
+
 ## Resources
 
 https://nix-community.github.io/NixOS-WSL
