@@ -7,6 +7,7 @@
 {
   environment.systemPackages = [
     # UI programs
+    pkgs.veracrypt
     pkgs.vlc
     pkgs.gimp
     pkgs.telegram-desktop
