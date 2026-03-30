@@ -69,6 +69,12 @@ SSH keys can be generated via:
 ssh-keygen -t ed25519 -C "valeriy.tymofieiev@gmail.com" -f /home/abc-valera/.ssh/id_ed_personal
 ```
 
+To manually run garbage collector:
+
+```
+sudo nix-collect-garbage -d
+```
+
 ## Resources
 
 https://nix-community.github.io/NixOS-WSL
