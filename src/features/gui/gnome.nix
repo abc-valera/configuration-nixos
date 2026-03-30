@@ -12,6 +12,9 @@
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
 
+  # Disable GNOME's built-in SSH agent in favour of programs.ssh.startAgent
+  services.gnome.gcr-ssh-agent.enable = false;
+
   environment.systemPackages = with pkgs; [
     # Extensions
     gnomeExtensions.just-perfection
