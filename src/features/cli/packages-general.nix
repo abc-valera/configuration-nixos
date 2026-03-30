@@ -27,5 +27,8 @@
 
     # Kernel modules
     pkgs.kmod
+
+    # Filesystem utilities
+    pkgs.exfatprogs
   ];
 }
