@@ -43,6 +43,7 @@ The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
 ## Updating the channels
 
 ```
+sudo nix-channel --update
 sudo nixos-rebuild switch --upgrade
 ```
 
