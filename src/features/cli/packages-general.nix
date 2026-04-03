@@ -31,4 +31,6 @@
     # Filesystem utilities
     pkgs.exfatprogs
   ];
+
+  programs.gnupg.agent.enable = true;
 }
