@@ -7,6 +7,7 @@
 {
   environment.systemPackages = [
     # UI programs
+    pkgs.keepassxc
     pkgs.veracrypt
     pkgs.vlc
     pkgs.gimp
