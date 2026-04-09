@@ -12,6 +12,7 @@
     pkgs.tree
     pkgs.glow # markdown previewer in terminal
     pkgs.ffmpeg
+    pkgs.jq
 
     # Archiving
     pkgs.zip
