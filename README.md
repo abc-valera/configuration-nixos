@@ -4,6 +4,8 @@ Clone the repo into the home directory:
 
 ```
 cd
+mkdir -p repos/abc-valera
+cd repos/abc-valera
 nix-shell -p git
 git clone https://github.com/abc-valera/config-nixos.git
 ```
@@ -18,11 +20,7 @@ sudo nix-channel --add https://github.com/nix-community/home-manager/archive/rel
 sudo nix-channel --update
 ```
 
-The next steps are specific for the installation target.
-
-### WSL Installation
-
-Add an additional channel:
+**If using WSL**, add an additional channel:
 
 ```
 sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-25.05.tar.gz nixos-wsl
@@ -30,15 +28,9 @@ sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/h
 sudo nix-channel --update
 ```
 
-Then run the `sudo NIXOS_CONFIG=$HOME/config-nixos/src/cmd/wsl/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
+**If using NixOS**, copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists. The `/etc/nixos` can then be removed entirely `sudo rm -r /etc/nixos`.
 
-### NixOS Installation
-
-Copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists.
-
-Then run the `sudo NIXOS_CONFIG=$HOME/config-nixos/src/cmd/nixos/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
-
-The `/etc/nixos` can be removed entirely `sudo rm -r /etc/nixos`.
+Then run the `sudo NIXOS_CONFIG=$HOME/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
 
 ## Updating the channels
 
