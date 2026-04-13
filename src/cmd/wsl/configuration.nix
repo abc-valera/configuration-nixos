@@ -38,20 +38,27 @@ in
   home-manager.users.abc-valera = import ../../features/home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
-  # WSL-specific shell aliases to use Windows SSH binaries
+  # WSL-specific shell aliases to use Windows SSH binaries (bash/zsh)
   environment.shellAliases = {
     ssh-add = "ssh-add.exe";
     ssh = ''ssh-add.exe -l > /dev/null || ssh-add.exe && echo -e "\e[92mssh-key(s) are now available in your ssh-agent until you lock your windows machine! \n \e[0m" && ssh.exe'';
   };
 
-  # Configure git to use the Windows SSH binary
-  home-manager.sharedModules = [
-    {
-      programs.git.extraConfig = {
+  # Same aliases for fish (environment.shellAliases does not apply to fish)
+  programs.fish.shellAliases = {
+    ssh-add = "ssh-add.exe";
+    ssh = ''ssh-add.exe -l > /dev/null || ssh-add.exe && echo -e "\e[92mssh-key(s) are now available in your ssh-agent until you lock your windows machine! \n \e[0m" && ssh.exe'';
+  };
+
+  # Configure git to use the Windows SSH binary via system-wide /etc/gitconfig
+  programs.git = {
+    enable = true;
+    config = [
+      {
         core.sshCommand = "ssh.exe";
-      };
-    }
-  ];
+      }
+    ];
+  };
 
   # WSL-specific settings
   wsl.enable = true;
