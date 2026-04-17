@@ -48,6 +48,17 @@ in
     end
   '';
 
+  programs.bash.shellAliases = {
+    ssh = "ssh.exe";
+    ssh-add = "ssh-add.exe";
+  };
+
+  programs.bash.interactiveShellInit = ''
+    if [ "$(git config --global --get core.sshCommand)" != "ssh.exe" ]; then
+      git config --global core.sshCommand "ssh.exe"
+    fi
+  '';
+
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
 
