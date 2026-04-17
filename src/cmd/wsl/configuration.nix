@@ -37,6 +37,15 @@ in
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
 
+  programs.fish.shellAliases = {
+    ssh = "ssh.exe";
+    ssh-add = "ssh-add.exe";
+  };
+
+  programs.fish.interactiveShellInit = ''
+    git config --global core.sshCommand "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
+  '';
+
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
 
