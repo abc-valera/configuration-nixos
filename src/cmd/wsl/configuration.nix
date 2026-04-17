@@ -28,11 +28,6 @@ in
   # Specify a custom location for the WSL configuration
   environment.variables.NIXOS_CONFIG = "${constants.nixosConfigPath}/src/cmd/wsl/configuration.nix";
 
-  # Symlink the ssh keys from windows
-  system.activationScripts.sshSymlink = "ln -sfn /mnt/c/Users/valer/.ssh /home/abc-valera/.ssh";
-  # And set the automount options so that the ssh keys (and all other windows files) appear with proper permissions in wsl
-  wsl.wslConf.automount.options = "metadata,umask=022,fmask=177";
-
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
   home-manager.users.abc-valera = import ../../features/home-manager.nix;
