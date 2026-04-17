@@ -37,6 +37,20 @@ in
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
 
+  programs.fish.shellAliases = {
+    ssh = "ssh.exe";
+    ssh-add = "ssh-add.exe";
+  };
+
+  programs.bash.shellAliases = {
+    ssh = "ssh.exe";
+    ssh-add = "ssh-add.exe";
+  };
+
+  programs.git.extraConfig = {
+    core.sshCommand = "ssh.exe";
+  };
+
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
 
