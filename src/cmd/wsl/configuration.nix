@@ -37,16 +37,15 @@ in
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
 
+  # Set the aliases to use windows's ssh agent (to have shared ssh keys beetwen the windows and wsl)
   programs.fish.shellAliases = {
     ssh = "ssh.exe";
     ssh-add = "ssh-add.exe";
   };
-
   programs.bash.shellAliases = {
     ssh = "ssh.exe";
     ssh-add = "ssh-add.exe";
   };
-
   programs.git.config = {
     core.sshCommand = "ssh.exe";
   };
