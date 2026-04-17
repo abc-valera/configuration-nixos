@@ -26,7 +26,7 @@ in
   ++ importAllNix ../../features/gui;
 
   # Specify a custom location for the WSL configuration
-  environment.variables.NIXOS_CONFIG = "${constants.nixosConfigPath}/src/cmd/wsl/configuration.nix";
+  environment.variables.NIXOS_CONFIG = "$HOME/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
