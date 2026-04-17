@@ -43,7 +43,9 @@ in
   };
 
   programs.fish.interactiveShellInit = ''
-    git config --global core.sshCommand "/mnt/c/Windows/System32/OpenSSH/ssh.exe"
+    if test "$(git config --global --get core.sshCommand)" != "ssh.exe"
+      git config --global core.sshCommand "ssh.exe"
+    end
   '';
 
   # Disable network manager in WSL
