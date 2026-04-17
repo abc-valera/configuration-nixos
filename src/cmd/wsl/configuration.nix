@@ -47,7 +47,7 @@ in
     ssh-add = "ssh-add.exe";
   };
 
-  programs.git.extraConfig = {
+  programs.git.config = {
     core.sshCommand = "ssh.exe";
   };
 
