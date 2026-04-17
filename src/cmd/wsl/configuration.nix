@@ -25,13 +25,14 @@ in
   ];
 
   # Specify a custom location for the WSL configuration
-  environment.variables = {
-    NIXOS_CONFIG = "$HOME/configuration-nixos/src/cmd/wsl/configuration.nix";
-  };
+  environment.variables.NIXOS_CONFIG = "$HOME/config-nixos/src/cmd/wsl/configuration.nix";
   # And preserve it when using sudo
-  security.sudo.extraConfig = ''
-    Defaults env_keep += "NIXOS_CONFIG"
-  '';
+  security.sudo.extraConfig = "Defaults env_keep += 'NIXOS_CONFIG'";
+
+  # Symlink the ssh keys from windows
+  system.activationScripts.sshSymlink = "ln -sfn /mnt/c/Users/valer/.ssh /home/abc-valera/.ssh";
+  # And set the automount options so that the ssh keys (and all other windows files) appear with proper permissions in wsl
+  wsl.wslConf.automount.options = "metadata,umask=022,fmask=177";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

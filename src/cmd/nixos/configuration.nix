@@ -34,14 +34,10 @@ in
   ++ importAllNix ../../features/cli
   ++ importAllNix ../../features/gui;
 
-  # Specify a custom location for the NixOS configuration
-  environment.variables = {
-    NIXOS_CONFIG = "$HOME/configuration-nixos/src/cmd/nixos/configuration.nix";
-  };
+  # Specify a custom location for the WSL configuration
+  environment.variables.NIXOS_CONFIG = "$HOME/config-nixos/src/cmd/wsl/configuration.nix";
   # And preserve it when using sudo
-  security.sudo.extraConfig = ''
-    Defaults env_keep += "NIXOS_CONFIG"
-  '';
+  security.sudo.extraConfig = "Defaults env_keep += 'NIXOS_CONFIG'";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
