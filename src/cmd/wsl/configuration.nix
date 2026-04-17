@@ -27,6 +27,8 @@ in
   # Specify a custom location for the WSL configuration
   environment.variables = {
     NIXOS_CONFIG = "$HOME/configuration-nixos/src/cmd/wsl/configuration.nix";
+    # Use the Windows SSH agent socket (npiperelay / wsl2-ssh-agent bridge)
+    SSH_AUTH_SOCK = "/mnt/c/Users/valer/.ssh/agent.sock";
   };
   # And preserve it when using sudo
   security.sudo.extraConfig = ''
@@ -38,27 +40,10 @@ in
   home-manager.users.abc-valera = import ../../features/home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
-  # WSL-specific shell aliases to use Windows SSH binaries (bash/zsh)
-  environment.shellAliases = {
-    ssh-add = "ssh-add.exe";
-    ssh = ''ssh-add.exe -l > /dev/null || ssh-add.exe && echo -e "\e[92mssh-key(s) are now available in your ssh-agent until you lock your windows machine! \n \e[0m" && ssh.exe'';
-  };
-
-  # Same aliases for fish (environment.shellAliases does not apply to fish)
-  programs.fish.shellAliases = {
-    ssh-add = "ssh-add.exe";
-    ssh = ''ssh-add.exe -l > /dev/null || ssh-add.exe && echo -e "\e[92mssh-key(s) are now available in your ssh-agent until you lock your windows machine! \n \e[0m" && ssh.exe'';
-  };
-
-  # Configure git to use the Windows SSH binary via system-wide /etc/gitconfig
-  programs.git = {
-    enable = true;
-    config = [
-      {
-        core.sshCommand = "ssh.exe";
-      }
-    ];
-  };
+  # Export SSH_AUTH_SOCK for fish (environment.variables does not apply to fish)
+  programs.fish.shellInit = ''
+    set -gx SSH_AUTH_SOCK /mnt/c/Users/valer/.ssh/agent.sock
+  '';
 
   # WSL-specific settings
   wsl.enable = true;
