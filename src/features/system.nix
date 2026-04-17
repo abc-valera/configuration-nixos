@@ -7,6 +7,9 @@
     "flakes"
   ];
 
+  # Preserve the custom NIXOS_CONFIG path when using sudo
+  security.sudo.extraConfig = "Defaults env_keep += 'NIXOS_CONFIG'";
+
   # Automatic garbage collection
   nix.gc = {
     automatic = true;

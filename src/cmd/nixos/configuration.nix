@@ -1,23 +1,14 @@
 { ... }:
 
-# TODO: check if it's possible to make windows dual boot reproducible
-
 let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  # TODO: make sure this is not fetched every time
+  constants = import ../../shared/constants.nix;
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };
-  importAllNix =
-    dir:
-    let
-      contents = builtins.readDir dir;
-    in
-    map (name: dir + "/${name}") (
-      builtins.filter (name: builtins.match ".*\\.nix$" name != null) (builtins.attrNames contents)
-    );
+  importAllNix = import ../../shared/import_all.nix;
 in
 {
   _module.args = {
@@ -35,9 +26,7 @@ in
   ++ importAllNix ../../features/gui;
 
   # Specify a custom location for the WSL configuration
-  environment.variables.NIXOS_CONFIG = "$HOME/config-nixos/src/cmd/wsl/configuration.nix";
-  # And preserve it when using sudo
-  security.sudo.extraConfig = "Defaults env_keep += 'NIXOS_CONFIG'";
+  environment.variables.NIXOS_CONFIG = "${constants.nixosConfigPath}/src/cmd/wsl/configuration.nix";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;

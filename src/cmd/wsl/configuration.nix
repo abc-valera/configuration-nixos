@@ -4,6 +4,7 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
+  constants = import ../../shared/constants.nix;
   # TODO: make sure this is not fetched every time
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
@@ -25,9 +26,7 @@ in
   ];
 
   # Specify a custom location for the WSL configuration
-  environment.variables.NIXOS_CONFIG = "$HOME/config-nixos/src/cmd/wsl/configuration.nix";
-  # And preserve it when using sudo
-  security.sudo.extraConfig = "Defaults env_keep += 'NIXOS_CONFIG'";
+  environment.variables.NIXOS_CONFIG = "${constants.nixosConfigPath}/src/cmd/wsl/configuration.nix";
 
   # Symlink the ssh keys from windows
   system.activationScripts.sshSymlink = "ln -sfn /mnt/c/Users/valer/.ssh /home/abc-valera/.ssh";
