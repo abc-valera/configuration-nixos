@@ -9,12 +9,14 @@ let
 in
 base
 // {
-  home.file =
-    base.home.file
-    // reposFolders {
-      sshBin = "ssh";
-      sshKeyAbcValera = "/home/abc-valera/.ssh/id_ed_personal";
-      sshKeyHideez = "/home/abc-valera/.ssh/id_ed_personal";
-      sshKeyValeriyO3c = "/home/abc-valera/.ssh/id_ed_o3c";
+  home = base.home // {
+    file =
+      base.home.file
+      // reposFolders {
+        sshBin = "ssh";
+        sshKeyAbcValera = "/home/abc-valera/.ssh/id_ed_personal";
+        sshKeyHideez = "/home/abc-valera/.ssh/id_ed_personal";
+        sshKeyValeriyO3c = "/home/abc-valera/.ssh/id_ed_o3c";
+      };
     };
 }
