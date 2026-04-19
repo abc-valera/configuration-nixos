@@ -4,7 +4,6 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  constants = import ../../shared/constants.nix;
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };
@@ -30,7 +29,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.abc-valera = import ../../features/home-manager.nix;
+  home-manager.users.abc-valera = import ./home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
   # Bootloader

@@ -4,7 +4,6 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  constants = import ../../shared/constants.nix;
   # TODO: make sure this is not fetched every time
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
@@ -20,6 +19,7 @@ in
     <home-manager/nixos>
 
     ../../features/system.nix
+    ../../features/cli/git.nix
     ../../features/cli/packages-dev.nix
     ../../features/cli/packages-general.nix
     ../../features/cli/packages-shell.nix
@@ -30,7 +30,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.abc-valera = import ../../features/home-manager.nix;
+  home-manager.users.abc-valera = import ./home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
   # WSL-specific settings
