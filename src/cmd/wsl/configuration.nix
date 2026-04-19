@@ -4,8 +4,6 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  constants = import ../../shared/constants.nix;
-  # TODO: make sure this is not fetched every time
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };
@@ -20,6 +18,7 @@ in
     <home-manager/nixos>
 
     ../../features/system.nix
+    ../../features/cli/git.nix
     ../../features/cli/packages-dev.nix
     ../../features/cli/packages-general.nix
     ../../features/cli/packages-shell.nix
@@ -36,19 +35,6 @@ in
   # WSL-specific settings
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
-
-  # Set the aliases to use windows's ssh agent (to have shared ssh keys beetwen the windows and wsl)
-  programs.fish.shellAliases = {
-    ssh = "ssh.exe";
-    ssh-add = "ssh-add.exe";
-  };
-  programs.bash.shellAliases = {
-    ssh = "ssh.exe";
-    ssh-add = "ssh-add.exe";
-  };
-  programs.git.config = {
-    core.sshCommand = "ssh.exe";
-  };
 
   # Disable network manager in WSL
   networking.networkmanager.enable = false;

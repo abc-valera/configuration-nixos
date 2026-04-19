@@ -4,7 +4,6 @@ let
   unstable = import <nixpkgs-unstable> {
     config.allowUnfree = true;
   };
-  constants = import ../../shared/constants.nix;
   dotfiles = builtins.fetchTarball {
     url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
   };

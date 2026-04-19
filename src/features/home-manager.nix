@@ -21,10 +21,53 @@
       source = "${dotfiles}/.bashrc";
       force = true;
     };
-    "repos" = {
-      source = "${dotfiles}/repos";
-      recursive = true;
+
+    "repos/abc-valera/.gitconfig" = {
       force = true;
+      text = ''
+        [user]
+            name = abc-valera
+            email = valeriy.tymofieiev@gmail.com
+            signingKey = /home/abc-valera/.ssh/id_ed_personal
+
+        [core]
+            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_personal
+
+        [github]
+            user = abc-valera
+      '';
+    };
+
+    "repos/hideez/.gitconfig" = {
+      force = true;
+      text = ''
+        [user]
+            name = abc-valera
+            email = valeriy.tymofieiev@gmail.com
+            signingKey = /home/abc-valera/.ssh/id_ed_personal
+
+        [core]
+            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_personal
+
+        [github]
+            user = abc-valera
+      '';
+    };
+
+    "repos/valeriy-o3c/.gitconfig" = {
+      force = true;
+      text = ''
+        [user]
+            name = valeriy-o3c
+            email = valeriy@o3c.no
+            signingKey = /home/abc-valera/.ssh/id_ed_o3c
+
+        [core]
+            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_o3c
+
+        [github]
+            user = valeriy-o3c
+      '';
     };
   };
 
