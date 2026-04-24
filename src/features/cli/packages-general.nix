@@ -23,6 +23,7 @@
     # Networking
     pkgs.wget
     pkgs.curl
+    pkgs.openssl
     pkgs.lsof
     pkgs.unixtools.netstat
 
