@@ -71,52 +71,50 @@ sudo nix-collect-garbage -d
 
 ## Shell Shortcuts
 
-![diagram](./.meta/images/shell_shortcuts.png)
-
 **Moving:**
 
-- `ctrl-a` moves the cursor to the beginning of the line.
-- `ctrl-e` moves to the end of line. If the cursor is already at the end of the line, and an autosuggestion is available, accepts the autosuggestion.
+- `left` / `right` move the cursor left or right by one character. If the cursor is already at the end of the line, and an autosuggestion is available, `right` accepts the autosuggestion.
 
-- `alt-b` and `alt-f` move the cursor one word left or right, or accept one word of the autosuggestion. If the command line is empty, moves forward/backward in the directory history instead.
+- `alt-left` / `alt-right` move the cursor left or right by one argument. If the command line is empty, they move forward/backward in the directory history. If the cursor is already at the end of the line, and an autosuggestion is available, `alt-right` accepts the first argument in the suggestion.
 
-- `ctrl-b` and `ctrl-f` move the cursor one character left or right or accept the autosuggestion
+- `ctrl-left` / `ctrl-right` move the cursor left or right by one word. These accept one word of the autosuggestion.
+
+- `shift-left` / `shift-right` move the cursor one word left or right, without stopping on punctuation. These accept one big word of the autosuggestion.
 
 **Completion:**
 
-- `tab` / `ctrl-i` completes the current token
+- `tab` / `ctrl-i` completes the current token.
 - `shift-tab` completes the current token and starts the pager’s search mode.
 
 **Editing:**
 
 - `ctrl-u` removes contents from the beginning of line to the cursor (moving it to the kill ring).
-- `ctrl-k` deletes from the cursor to the end of line (moving it to the kill ring).
 
 - `ctrl-w` removes the previous path component (everything up to the previous “/”, “:” or “@”) (moving it to the kill ring).
 - `alt-d` moves the next word to the kill ring.
+- `ctrl-delete` moves the next word to the kill ring.
+- `alt-delete` moves the next argument to the kill ring.
 
-- `ctrl-d` deletes one character to the right of the cursor. If the command line is empty, ctrl-d will exit fish.
-- `ctrl-h` removes one character forwards or backwards respectively.
+- `ctrl-d` deletes one character to the right of the cursor. If the command line is empty, `ctrl-d` will exit fish.
 
-- `alt-s` Prepends sudo to the current commandline. If the commandline is empty, prepend sudo to the last commandline.
+- `alt-s` prepends sudo to the current commandline. If the commandline is empty, prepend sudo to the last commandline.
 
 - `alt-enter` inserts a newline at the cursor position. This is useful to add a line to a commandline that’s already complete.
 
-- `ctrl-shift-z` reverts the most recent undo.
-- `ctrl-z` undo the most recent edit of the line.
-
 - `alt-p` adds the string `&| less;` to the end of the job under the cursor. The result is that the output of the command will be paged.
+
+- `ctrl-space` inserts a space without expanding an abbreviation.
 
 **Clipboard:**
 
-- `ctrl-v` inserts the clipboard contents
-- `ctrl-x` copies the current buffer to the system’s clipboard
+- `ctrl-v` inserts the clipboard contents.
+- `ctrl-x` copies the current buffer to the system’s clipboard.
 
 **History:**
 
-- `ctrl-r` opens the history in a pager. This will show history entries matching the search, a few at a time. Pressing `ctrl-r` again will search older entries, pressing `ctrl-s` (that otherwise toggles pager search) will go to newer entries. The search bar will always be selected.
+- `up` / `down` (or `ctrl-p` / `ctrl-n`) search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match.
 
-- `ctrl-p` and `ctrl-n` search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match.
+- `alt-up` / `alt-down` search the command history for the previous/next token containing the token under the cursor before the search was started. If the commandline was not on a token when the search started, all tokens match.
 
 - `shift-delete` removes the current history item or autosuggestion from the command history.
 
@@ -139,9 +137,76 @@ sudo nix-collect-garbage -d
 **Other:**
 
 - `alt-w` prints a short description of the command under the cursor.
-- `alt-h` shows the manual page for the current command, if one exists.
+- `alt-h` / `f1` shows the manual page for the current command, if one exists.
 
 - `ctrl-l` pushes any text above the prompt to the terminal’s scrollback, then clears and repaints the screen.
+
+### Vim shortcuts
+
+**Command mode** (also known as normal mode):
+
+- `h` moves the cursor left.
+- `l` moves the cursor right.
+- `k` / `j` search the command history for the previous/next command containing the string that was specified on the commandline before the search was started. If the commandline was empty when the search started, all commands match. In multi-line commands, they move the cursor up and down respectively.
+- `0` moves the cursor to beginning of line (remaining in command mode).
+- `g,g` / `G` moves the cursor to the beginning/end of the commandline, respectively.
+
+- `i` enters insert mode at the current cursor position.
+- `I` enters insert mode at the beginning of the line.
+- `a` enters insert mode after the current cursor position.
+- `A` enters insert mode at the end of the line.
+- `o` inserts a new line under the current one and enters insert mode.
+- `O` inserts a new line above the current one and enters insert mode.
+
+- `v` enters visual mode at the current cursor position.
+
+- `d,d` deletes the current line and moves it to the kill ring.
+- `D` deletes text after the current cursor position and moves it to the kill ring.
+
+- `p` pastes text from the kill ring.
+
+- `u` undoes the most recent edit of the command line.
+- `ctrl-r` redoes the most recent edit.
+
+- `[` / `]` search the command history for the previous/next token containing the token under the cursor before the search was started.
+- `/` opens the history in a pager. Pressing it again searches older entries; `ctrl-s` goes to newer entries. The search bar will always be selected.
+
+- `~` toggles the case (upper/lower) of the character and moves to the next character.
+- `g,u` lowercases to the end of the word.
+- `g,U` uppercases to the end of the word.
+
+- `:,q` exits fish.
+
+**Insert mode:**
+
+- `escape` enters command mode.
+
+- `backspace` removes one character to the left.
+
+- `ctrl-n` accepts the autosuggestion.
+
+**Visual mode:**
+
+- `escape` / `ctrl-c` enter command mode.
+
+- `h` moves the cursor left.
+- `l` moves the cursor right.
+- `k` moves the cursor up.
+- `j` moves the cursor down.
+
+- `left` / `right` extend the selection backward/forward by one character.
+- `b` / `w` extend the selection backward/forward by one word.
+- `d` / `x` move the selection to the kill ring and enter command mode.
+- `c` / `s` remove the selection and switch to insert mode.
+
+- `X` moves the entire line to the kill ring, and enters command mode.
+- `y` copies the selection to the kill ring, and enters command mode.
+
+- `”*,y` copies the selection to the clipboard, and enters command mode.
+
+- `~` toggles the case (upper/lower) on the selection, and enters command mode.
+- `g,u` lowercases the selection, and enters command mode.
+- `g,U` uppercases the selection, and enters command mode.
 
 ## Resources
 
