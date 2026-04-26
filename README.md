@@ -1,3 +1,5 @@
+[![#StandWithUkraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/badges/StandWithUkraine.svg)](https://vshymanskyy.github.io/StandWithUkraine)
+
 ## Installation
 
 Clone the repo into the home directory:
