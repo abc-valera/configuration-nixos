@@ -9,6 +9,8 @@
   home.username = "abc-valera";
   home.homeDirectory = "/home/abc-valera";
 
+  home.sessionPath = [ "$GOBIN" ];
+
   # Symlink all the dotfiles to the home directory.
   # Such structure will map everything from the dotfiles to ~ as is.
   home.file = {
@@ -27,6 +29,7 @@
     # It is used as the gpg.ssh.program for git commit signing.
     ".local/bin/git-ssh-sign" = {
       executable = true;
+      force = true;
       source = ./git-ssh-sign.bash;
     };
 

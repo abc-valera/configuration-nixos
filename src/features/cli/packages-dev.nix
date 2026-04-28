@@ -23,8 +23,13 @@
   };
 
   environment.variables = {
+    GOPATH = "$HOME/go";
+    GOBIN = "$HOME/go/bin";
+
     RUST_SRC_PATH = "${unstable.rust.packages.stable.rustPlatform.rustLibSrc}";
   };
+
+  environment.localBinInPath = true;
 
   # On programming languages setup: https://github.com/the-nix-way/dev-templates
   environment.systemPackages = [
