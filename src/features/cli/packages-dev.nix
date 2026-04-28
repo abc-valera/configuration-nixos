@@ -75,6 +75,7 @@
 
     # Python https://wiki.nixos.org/wiki/Python
     unstable.python3
+    unstable.uv
 
     # Perl
     unstable.perl
