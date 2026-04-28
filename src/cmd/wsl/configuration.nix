@@ -24,8 +24,12 @@ in
     ../../features/cli/packages-shell.nix
   ];
 
-  # Specify a custom location for the WSL configuration
-  environment.variables.NIXOS_CONFIG = "$HOME/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix";
+  # Point nixos-rebuild to the config in the repo, keeping the other default NIX_PATH entries intact
+  nix.nixPath = [
+    "nixos-config=/home/abc-valera/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix"
+    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+    "/nix/var/nix/profiles/per-user/root/channels"
+  ];
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
