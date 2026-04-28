@@ -33,7 +33,7 @@ in
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
-  home-manager.users.abc-valera = import ../../features/home-manager.nix;
+  home-manager.users.abc-valera = import ../../features/home/home-manager.nix;
   home-manager.extraSpecialArgs = { inherit dotfiles; };
 
   # WSL-specific settings

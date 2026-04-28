@@ -22,6 +22,14 @@
       force = true;
     };
 
+    # This script is a wrapper around ssh-keygen that
+    # ensures that the signing key is added to the ssh-agent on use.
+    # It is used as the gpg.ssh.program for git commit signing.
+    ".local/bin/git-ssh-sign" = {
+      executable = true;
+      source = ./git-ssh-sign.bash;
+    };
+
     "repos/abc-valera/.gitconfig" = {
       force = true;
       text = ''
@@ -30,11 +38,14 @@
             email = valeriy.tymofieiev@gmail.com
             signingKey = /home/abc-valera/.ssh/id_ed_personal
 
-        [core]
-            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_personal
-
         [github]
             user = abc-valera
+
+        [url "github-personal:"]
+            insteadOf = git@github.com:
+
+        [gpg "ssh"]
+            program = /home/abc-valera/.local/bin/git-ssh-sign
       '';
     };
 
@@ -46,11 +57,14 @@
             email = valeriy.tymofieiev@gmail.com
             signingKey = /home/abc-valera/.ssh/id_ed_personal
 
-        [core]
-            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_personal
-
         [github]
             user = abc-valera
+
+        [url "github-personal:"]
+            insteadOf = git@github.com:
+
+        [gpg "ssh"]
+            program = /home/abc-valera/.local/bin/git-ssh-sign
       '';
     };
 
@@ -62,12 +76,38 @@
             email = valeriy@o3c.no
             signingKey = /home/abc-valera/.ssh/id_ed_o3c
 
-        [core]
-            sshCommand = ssh -i /home/abc-valera/.ssh/id_ed_o3c
-
         [github]
             user = valeriy-o3c
+
+        [url "github-o3c:"]
+            insteadOf = git@github.com:
+
+        [gpg "ssh"]
+            program = /home/abc-valera/.local/bin/git-ssh-sign
       '';
+    };
+  };
+
+  # Start ssh-agent as a user service
+  services.ssh-agent.enable = true;
+
+  # SSH config
+  programs.ssh = {
+    enable = true;
+    enableDefaultConfig = false;
+    matchBlocks = {
+      "github-personal" = {
+        user = "git";
+        hostname = "github.com";
+        identityFile = "~/.ssh/id_ed_personal";
+        extraOptions.AddKeysToAgent = "3600";
+      };
+      "github-o3c" = {
+        user = "git";
+        hostname = "github.com";
+        identityFile = "~/.ssh/id_ed_o3c";
+        extraOptions.AddKeysToAgent = "3600";
+      };
     };
   };
 
