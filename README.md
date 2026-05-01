@@ -12,48 +12,48 @@ nix-shell -p git
 git clone https://github.com/abc-valera/config-nixos.git
 ```
 
-Add and update the following channels:
+**If using NixOS**, copy the hardware configuration from `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if it doesn't already exist. The `/etc/nixos` directory can then be removed entirely:
 
 ```
-sudo nix-channel --add https://nixos.org/channels/nixos-xx.xx nixos
-sudo nix-channel --add https://nixos.org/channels/nixos-unstable nixpkgs-unstable
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-xx.xx.tar.gz home-manager
-
-sudo nix-channel --update
+sudo rm -r /etc/nixos
 ```
 
-**If using WSL**, add an additional channel:
+Then apply the configuration (replace `wsl` or `elitebook25` with the target host):
 
 ```
-sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-25.05.tar.gz nixos-wsl
+# WSL
+sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#wsl
 
-sudo nix-channel --update
+# Bare metal
+sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#elitebook25
 ```
 
-**If using NixOS**, copy the hardware configuration from the `/etc/nixos` into `src/cmd/nixos/hardware/<machine-name>` if not already exists. The `/etc/nixos` can then be removed entirely `sudo rm -r /etc/nixos`.
+On the first run, Nix will create a `flake.lock` file pinning all input versions.
 
-Then run the `sudo NIXOS_CONFIG=$HOME/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix nixos-rebuild switch`. Note, that the `NIXOS_CONFIG` var should be provided only once, the following runs of `nixos-rebuild` can be done without it: `sudo nixos-rebuild switch`.
+## Updating inputs
 
-## Updating the channels
+To update all flake inputs to their latest versions and rebuild:
 
 ```
-sudo nix-channel --update
-sudo nixos-rebuild switch --upgrade
+nix flake update ~/repos/abc-valera/config-nixos
+sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
+```
+
+To update a single input (e.g. only `nixpkgs-unstable`):
+
+```
+nix flake update nixpkgs-unstable --flake ~/repos/abc-valera/config-nixos
+sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
 ## Updating to a next major system version
 
-Run the `sudo nix-channel --list` to see all the channels enabled. Override the old channels with the new ones. For example, `sudo nix-channel --add https://channels.nixos.org/nixos-25.11 nixos` to override the `nixos` channel.
-
-Approximate list of commands (change the `xx.xx` for the target version):
+Edit `flake.nix` and bump the channel references for `nixpkgs` and `home-manager` to the new release (e.g. `nixos-26.05` / `release-26.05`). Also update `system.stateVersion` in the relevant `configuration.nix` files. Then run:
 
 ```
-sudo nix-channel --add https://channels.nixos.org/nixos-xx.xx nixos
-sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-xx.xx.tar.gz home-manager
-sudo nix-channel --add https://github.com/nix-community/NixOS-WSL/archive/refs/heads/release-xx.xx.tar.gz nixos-wsl
+nix flake update ~/repos/abc-valera/config-nixos
+sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
-
-Then verify using `sudo nix-channel --list`. If everything okay then don't forget to run `sudo nixos-rebuild switch --upgrade`.
 
 ## Other useful commands
 

@@ -1,12 +1,10 @@
-{ ... }:
+{
+  unstable,
+  dotfiles,
+  ...
+}:
 
 let
-  unstable = import <nixpkgs-unstable> {
-    config.allowUnfree = true;
-  };
-  dotfiles = builtins.fetchTarball {
-    url = "https://github.com/abc-valera/dotfiles/archive/refs/heads/main.tar.gz";
-  };
   importAllNix = import ../../shared/import_all.nix;
 in
 {
@@ -16,16 +14,10 @@ in
 
   imports = [
     ./hardware/elitebook25.nix
-
-    <home-manager/nixos>
-
     ../../features/system.nix
   ]
   ++ importAllNix ../../features/cli
   ++ importAllNix ../../features/gui;
-
-  # Specify a custom location for the WSL configuration
-  environment.variables.NIXOS_CONFIG = "$HOME/repos/abc-valera/config-nixos/src/cmd/wsl/configuration.nix";
 
   home-manager.useGlobalPkgs = true;
   home-manager.useUserPackages = true;
@@ -56,8 +48,6 @@ in
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
-    #jack.enable = true;
   };
 
   system.stateVersion = "25.05";
