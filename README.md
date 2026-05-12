@@ -85,7 +85,10 @@ sudo nix-collect-garbage -d
 **Completion:**
 
 - `tab` / `ctrl-i` completes the current token
-- `shift-tab` completes the current token and starts the pager’s search mode.
+- `shift-tab` completes the current token and starts the pager’s search mode
+- `alt-f` accepts the first argument/word of the autosuggestion
+- `ctrl-e` accepts the full autosuggestion
+- `alt-b` / `alt-f` accept one word of the autosuggestion
 
 **Editing:**
 
