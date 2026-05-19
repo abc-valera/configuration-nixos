@@ -13,6 +13,8 @@
     pkgs.glow # markdown previewer in terminal
     pkgs.ffmpeg
     pkgs.jq
+    pkgs.inkscape
+    pkgs.imagemagick
 
     # Archiving
     pkgs.zip
