@@ -19,6 +19,7 @@
       pkgs.xorg.libX11
       pkgs.xorg.libXext
       pkgs.xorg.libSM
+      pkgs.icu
     ];
   };
 
