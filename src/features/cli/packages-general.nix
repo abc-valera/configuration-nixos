@@ -15,6 +15,7 @@
     pkgs.jq
     pkgs.inkscape
     pkgs.imagemagick
+    pkgs.google-cloud-sdk
 
     # Archiving
     pkgs.zip
