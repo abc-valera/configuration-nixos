@@ -7,7 +7,7 @@
   # CLI programs
   environment.systemPackages = [
     # General programs
-    pkgs.neofetch
+    pkgs.fastfetch
     pkgs.which
     pkgs.tree
     pkgs.glow # markdown previewer in terminal
