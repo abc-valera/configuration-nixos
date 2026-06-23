@@ -48,7 +48,7 @@ sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 
 ## Updating to a next major system version
 
-Edit `flake.nix` and bump the channel references for `nixpkgs` and `home-manager` to the new release (e.g. `nixos-26.05` / `release-26.05`). Also update `system.stateVersion` in the relevant `configuration.nix` files. Then run:
+Edit the versions for the inputs in `flake.nix` to match the new release (e.g. bump `26.05` → `26.11`). Then run:
 
 ```
 nix flake update ~/repos/abc-valera/config-nixos
