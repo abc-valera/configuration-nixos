@@ -51,7 +51,7 @@ sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 Edit the versions for the inputs in `flake.nix` to match the new release (e.g. bump `26.05` → `26.11`). Then run:
 
 ```
-nix flake update ~/repos/abc-valera/config-nixos
+nix flake update --flake ~/repos/abc-valera/config-nixos
 sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
