@@ -35,14 +35,14 @@ On the first run, Nix will create a `flake.lock` file pinning all input versions
 To update all flake inputs to their latest versions and rebuild:
 
 ```
-nix flake update ~/repos/abc-valera/config-nixos
+sudo nix flake update ~/repos/abc-valera/config-nixos
 sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
 To update a single input (e.g. only `nixpkgs-unstable`):
 
 ```
-nix flake update nixpkgs-unstable --flake ~/repos/abc-valera/config-nixos
+sudo nix flake update nixpkgs-unstable --flake ~/repos/abc-valera/config-nixos
 sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
@@ -51,7 +51,7 @@ sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 Edit the versions for the inputs in `flake.nix` to match the new release (e.g. bump `26.05` → `26.11`). Then run:
 
 ```
-nix flake update --flake ~/repos/abc-valera/config-nixos
+sudo nix flake update --flake ~/repos/abc-valera/config-nixos
 sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
