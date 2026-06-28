@@ -35,7 +35,7 @@ On the first run, Nix will create a `flake.lock` file pinning all input versions
 To update all flake inputs to their latest versions and rebuild:
 
 ```
-sudo nix flake update ~/repos/abc-valera/config-nixos
+sudo nix flake update --flake ~/repos/abc-valera/config-nixos
 sudo nixos-rebuild switch --flake ~/repos/abc-valera/config-nixos#<host>
 ```
 
