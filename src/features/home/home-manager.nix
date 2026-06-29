@@ -103,12 +103,14 @@
         User = "git";
         Hostname = "github.com";
         IdentityFile = "~/.ssh/id_ed_personal";
+        IdentitiesOnly = "yes";
         AddKeysToAgent = "3600";
       };
       "github-o3c" = {
         User = "git";
         Hostname = "github.com";
         IdentityFile = "~/.ssh/id_ed_o3c";
+        IdentitiesOnly = "yes";
         AddKeysToAgent = "3600";
       };
     };
