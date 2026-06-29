@@ -98,18 +98,18 @@
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github-personal" = {
-        user = "git";
-        hostname = "github.com";
-        identityFile = "~/.ssh/id_ed_personal";
-        extraOptions.AddKeysToAgent = "3600";
+        User = "git";
+        Hostname = "github.com";
+        IdentityFile = "~/.ssh/id_ed_personal";
+        AddKeysToAgent = "3600";
       };
       "github-o3c" = {
-        user = "git";
-        hostname = "github.com";
-        identityFile = "~/.ssh/id_ed_o3c";
-        extraOptions.AddKeysToAgent = "3600";
+        User = "git";
+        Hostname = "github.com";
+        IdentityFile = "~/.ssh/id_ed_o3c";
+        AddKeysToAgent = "3600";
       };
     };
   };

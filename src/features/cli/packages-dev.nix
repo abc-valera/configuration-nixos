@@ -15,10 +15,10 @@
       pkgs.libgcc.lib
       pkgs.glib.out
       pkgs.libGL
-      pkgs.xorg.libxcb
-      pkgs.xorg.libX11
-      pkgs.xorg.libXext
-      pkgs.xorg.libSM
+      pkgs.libxcb
+      pkgs.libx11
+      pkgs.libxext
+      pkgs.libsm
       pkgs.icu
     ];
   };
@@ -43,7 +43,7 @@
     pkgs.gnumake
 
     # Nix
-    pkgs.nixfmt-rfc-style
+    pkgs.nixfmt
     pkgs.nixd
 
     # C/C++
