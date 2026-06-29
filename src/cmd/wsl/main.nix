@@ -26,6 +26,8 @@
   wsl.enable = true;
   wsl.defaultUser = "abc-valera";
 
+  programs.nix-ld.enable = true;
+
   # Disable network manager in WSL
   networking.networkmanager.enable = false;
 
