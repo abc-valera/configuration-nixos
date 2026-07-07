@@ -1,11 +1,14 @@
 {
   pkgs,
+  run-sh,
   ...
 }:
 
 {
   # CLI programs
   environment.systemPackages = [
+    run-sh.packages.${pkgs.system}.default
+
     # General programs
     pkgs.fastfetch
     pkgs.which

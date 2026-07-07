@@ -16,9 +16,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dotfiles = {
-      url = "github:abc-valera/dotfiles/main";
-      flake = false;
+    dotfiles.url = "github:abc-valera/dotfiles/main";
+
+    run-sh = {
+      url = "github:abc-valera/run.sh/main";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
@@ -29,6 +31,7 @@
       home-manager,
       nixos-wsl,
       dotfiles,
+      run-sh,
       ...
     }:
     let
@@ -38,7 +41,7 @@
         config.allowUnfree = true;
       };
       specialArgs = {
-        inherit unstable dotfiles;
+        inherit unstable dotfiles run-sh;
       };
     in
     {
