@@ -69,6 +69,13 @@ To manually run garbage collector:
 sudo nix-collect-garbage -d
 ```
 
+To cleanup docker data:
+
+```
+docker system prune -a --volumes -f
+docker builder prune -a -f
+```
+
 ## Shell Shortcuts
 
 ![diagram](./.meta/images/shell_shortcuts.png)
