@@ -76,6 +76,12 @@ docker system prune -a --volumes -f
 docker builder prune -a -f
 ```
 
+To check the disk usage:
+
+```
+df -h
+```
+
 ## Shell Shortcuts
 
 ![diagram](./.meta/images/shell_shortcuts.png)
