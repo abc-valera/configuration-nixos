@@ -3,6 +3,9 @@
 {
   programs.git = {
     enable = true;
+    ignores = [
+      "CLAUDE.local.md"
+    ];
     config = {
       # Here all the different git users' configuration overrides are listed
       includeIf = {
