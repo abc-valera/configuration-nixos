@@ -51,6 +51,9 @@
     LC_TIME = "uk_UA.UTF-8";
   };
 
+  # Sudo
+  security.sudo.wheelNeedsPassword = true;
+
   # User account
   users.users.abc-valera = {
     isNormalUser = true;
